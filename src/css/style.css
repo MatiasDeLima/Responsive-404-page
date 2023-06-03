@@ -1,0 +1,295 @@
+/*############### GOOGLE FONTS ###############*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/*############### VARIABLES CSS ###############*/
+:root {
+    --header-height: 3.5rem;
+
+    /*########## Colors ##########*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --first-color: hsl(7, 100%, 68%);
+    --first-color-alt: hsl(7, 100%, 66%);
+    --title-color: hsl(200, 19%, 18%);
+    --text-color: hsl(0, 0%, 49%);
+    --body-color: hsl(0, 0%, 96%);
+
+    /*########## Font and typography ##########*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: 'Inter', sans-serif;
+    ;
+    --biggest-font-size: 2rem;
+    --normal-font-size: .875rem;
+    --h1-font-size: 1.375rem;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+    :root {
+        --biggest-font-size: 4rem;
+        --normal-font-size: 1rem;
+        --h1-font-size: 2rem;
+    }
+}
+
+/*############### BASE ###############*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: background .4s;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*############### REUSABLE CSS CLASSES ###############*/
+.container {
+    max-width: 1024px;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.main {
+    overflow: hidden;
+    /* For the animations */
+}
+
+.grid {
+    display: grid;
+}
+
+body.dark-theme {
+    --title-color: hsl(0, 0%, 100%);
+    --text-color: hsl(0, 0%, 76%);
+    --body-color: hsl(0, 0%, 12%);
+}
+
+.dark-theme .nav__logo,
+.dark-theme .nav__toggle,
+.dark-theme .nav__close,
+.dark-theme .theme__button,
+.dark-theme .nav__link{
+    color: #fff;
+}
+
+.dark-theme .nav__menu{
+    box-shadow: 4px 0 12px #0e0e0e;
+}
+
+/*############### HEADER & NAV ###############*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.nav {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__btns {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 1.25rem;
+}
+
+.nav__toggle {
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: var(--title-color);
+}
+
+.theme__button {
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: var(--title-color);
+}
+
+.nav__logo {
+    display: inline-flex;
+    align-items: center;
+    column-gap: .3rem;
+    font-weight: 600;
+    color: var(--title-color);
+}
+
+.nav__logo img{
+    width: 32px;
+}
+
+@media screen and (max-width: 768px) {
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100%;
+        background-color: var(--body-color);
+        padding: 8rem 0 2rem;
+        z-index: 100;
+        box-shadow: 4px 0 12px #dfdfdf98;
+        transition: .4s;
+    }
+}
+
+.nav__close {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.nav__list {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.5rem;
+}
+
+.nav__link {
+    color: var(--text-color);
+    transition: color .3s;
+}
+
+.nav__link:hover {
+    color: var(--first-color);
+}
+
+/* Show menu */
+.show-menu {
+    right: 0;
+}
+
+/*############### HOME ###############*/
+.home__container {
+    grid-template-columns: 327px;
+    justify-content: center;
+    padding-top: 5rem;
+    row-gap: 2.5rem;
+}
+
+.home__data {
+    text-align: center;
+}
+
+.home__title {
+    text-transform: uppercase;
+    font-size: var(--biggest-font-size);
+    color: var(--title-color);
+    margin-bottom: .5rem;
+}
+
+.home__subtitle {
+    font-size: var(--h1-font-size);
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--title-color);
+    margin-bottom: 1rem;
+    line-height: 33px;
+}
+
+.home__description {
+    line-height: 21px;
+    margin-bottom: 2rem;
+}
+
+.home__image {
+    width: 268px;
+    justify-self: center;
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: .5rem;
+    transition: .3s;
+}
+
+.button:hover {
+    background-color: var(--first-color-alt);
+}
+
+/*############### BREAKPOINTS ###############*/
+/* For small devices */
+
+
+/* For medium devices */
+@media  screen and (min-width: 767px) {
+    .home__container{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: center;
+        padding-top: 10rem;
+        column-gap: 3rem;
+    }
+
+    .home__data{
+        text-align: initial;
+    }
+
+    .nav__toggle,
+    .nav__close{
+        display: none;
+    }
+
+    .nav__list{
+        flex-direction: row;
+        column-gap: 3rem;
+    }
+
+    .home__image{
+        width: 350px;
+    }
+
+    .dark-theme .nav__menu{
+        box-shadow: none;
+    }
+}
+
+/* For large devices */
+
+@media screen and (min-width: 1024px){
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home__image {
+        width: 420px;
+    }
+
+    .home__subtitle{
+        line-height: 48px;
+    }
+
+    .home__description{
+        line-height: 24px;
+        margin-bottom: 3rem;
+    }
+}
